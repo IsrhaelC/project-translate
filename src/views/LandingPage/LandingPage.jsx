@@ -45,23 +45,17 @@ class LandingPage extends React.Component {
           <div className={classes.container}>
             <GridContainer>
               <GridItem xs={12} sm={12} md={6}>
-                <h1 className={classes.title}>Your Story Starts With Us.</h1>
+                <h1 className={classes.title}>Your project translated in a moment</h1>
                 <h4>
-                  Every landing page needs a small description after the big
-                  bold title, that's why we added this text here. Add here all
-                  the information that can make you or your product create the
-                  first impression.
+                Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit, 
+                sed do eiusmod tempor incididunt ut 
+                labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, 
+                quis nostrud exercitation ullamco 
+                laboris nisi ut aliquip ex ea commodo consequat. 
                 </h4>
                 <br />
-                <Button
-                  color="danger"
-                  size="lg"
-                  href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i className="fas fa-play" />Watch video
-                </Button>
               </GridItem>
             </GridContainer>
           </div>

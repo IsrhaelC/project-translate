@@ -10,7 +10,7 @@ import ListItem from "material-ui/List/ListItem";
 import Tooltip from "material-ui/Tooltip";
 
 // @material-ui/icons
-import { Apps, CloudDownload } from "@material-ui/icons";
+import { Apps, MonetizationOn } from "@material-ui/icons";
 
 // core components
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
@@ -25,7 +25,7 @@ function HeaderLinks({ ...props }) {
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
         <CustomDropdown
-          buttonText="Components"
+          buttonText="Products"
           buttonProps={{
             className: classes.navLink,
             color: "transparent"
@@ -33,27 +33,26 @@ function HeaderLinks({ ...props }) {
           buttonIcon={Apps}
           dropdownList={[
             <Link to="/" className={classes.dropdownLink}>
-              All components
+              All Products
             </Link>,
             // eslint-disable-next-line
-            <a
-              href="http://creativetimofficial.github.io/material-kit-react/#/documentation"
-              target="_blank"
-              className={classes.dropdownLink}
-            >
-              Documentation
-            </a>
+            <Link to="/" className={classes.dropdownLink}>
+              Translate Services
+            </Link>,
+            <Link to="/" className={classes.dropdownLink}>
+              Others Services
+            </Link>
           ]}
         />
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
-          href="https://www.creative-tim.com/product/material-kit-react"
+          href="https://www.google.com"
           color="transparent"
           target="_blank"
           className={classes.navLink}
         >
-          <CloudDownload className={classes.icons} /> Download
+          <MonetizationOn className={classes.icons} /> Pricing  
         </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
