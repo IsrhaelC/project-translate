@@ -3,6 +3,8 @@ import React from "react";
 import classNames from "classnames";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
+// react components for routing our app without refresh
+import { Link } from "react-router-dom";
 // material-ui components
 import withStyles from "material-ui/styles/withStyles";
 import AppBar from "material-ui/AppBar";
@@ -74,9 +76,11 @@ class Header extends React.Component {
       [classes.fixed]: fixed
     });
     const brandComponent = (
-      <Button href="#" className={classes.title}>
-        {brand}
-      </Button>
+      <Link to="/home" className={classes.dropdownLink}>
+        <Button href="#" className={classes.title}>
+          {brand}
+        </Button>
+      </Link>
     );
     return (
       <AppBar className={appBarClasses}>
