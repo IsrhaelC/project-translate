@@ -56,7 +56,7 @@ function HeaderLinks({ ...props }) {
         </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
-        <Link to="/login-page" className={classes.dropdownLink}>
+        <Link to="/repository" className={classes.dropdownLink}>
           <Button
             color="transparent"
             target="_blank"

@@ -5,9 +5,10 @@
   "dependencies": {
     "@material-ui/icons": "1.0.0-beta.43",
     "history": "4.7.2",
-    "material-ui": "1.0.0-beta.45",
+    "material-ui": "^1.0.0-beta.45",
     "moment": "2.22.1",
     "node-sass-chokidar": "1.2.2",
+    "npm": "^6.0.1",
     "npm-run-all": "4.1.2",
     "react": "16.3.1",
     "react-datetime": "2.14.0",
