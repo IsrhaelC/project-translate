@@ -30,7 +30,10 @@ class RepositorySection extends React.Component {
         nome: "repositorio 1"
       }, {
         nome: "repositorio 2"
-      }]
+      }],
+      traducoes: [],
+      languageSource: '',
+      languageTarget: ''
     };
   }
 
@@ -46,8 +49,15 @@ class RepositorySection extends React.Component {
     });
   }
 
-  createJson (selection) {
-    
+  createJson (selection, pathFile) {
+    var array = []
+    var obj = new Object()
+    obj.texto = texto
+    obj.pagina = pathFile
+    array.push(obj)
+    this.setState({
+      traducoes: array
+    })
   }
 
   componentDidMount () {
@@ -107,7 +117,7 @@ class RepositorySection extends React.Component {
               >
                 <h3 className={classes.popoverHeader}>Add for translation</h3>
                 <div className={classes.popoverBody}>
-                <Button color="primary" onClick={() => this.createJson(document.getSelection().toString())}>
+                <Button color="primary" onClick={() => this.createJson(document.getSelection().toString(), "path de arquivo qualquer")}>
                   Add
                 </Button>
                 </div>
