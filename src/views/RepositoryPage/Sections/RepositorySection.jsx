@@ -2,18 +2,48 @@ import React from "react";
 // material-ui components
 import withStyles from "material-ui/styles/withStyles";
 
-// @material-ui/icons
-import Language from "@material-ui/icons/Language";
-import VerifiedUser from "@material-ui/icons/VerifiedUser";
-import Settings from "@material-ui/icons/Settings";
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
-import InfoArea from "components/InfoArea/InfoArea.jsx";
+import Popover from "material-ui/Popover";
+import Button from "material-ui/Button";
+
+import CodeViewer from '../../../components/CodeViewer/CodeViewer.jsx'
 
 import productStyle from "assets/jss/material-kit-react/views/landingPageSections/productStyle.jsx";
 
-class ProductSection extends React.Component {
+class RepositorySection extends React.Component {
+  anchorElLeft = null;
+  anchorElTop = null;
+  anchorElBottom = null;
+  anchorElRight = null;
+  constructor(props) {
+    super(props);
+    this.state = {
+      classicModal: false,
+      openLeft: false,
+      openTop: false,
+      openBottom: false,
+      openRight: false
+    };
+  }
+
+  handleClickButton(state) {
+    this.setState({
+      [state]: true
+    });
+  }
+
+  handleClosePopover(state) {
+    this.setState({
+      [state]: false
+    });
+  }
+
+  componentDidMount () {
+    document.oncontextmenu = (e) => e.preventDefault()
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -35,9 +65,38 @@ class ProductSection extends React.Component {
         <div>
           <GridContainer>
             <GridItem xs={12} sm={12} md={12}>
-              <ul>
-                <li>Teste</li>
-              </ul>
+              <CodeViewer handleClick={(e) => {
+                if (e.type === 'click') {
+                  console.log('Use o botão direito');
+                } else if (e.type === 'contextmenu') {
+                  this.handleClickButton("openTop")
+                  this.anchorElTop = document.getSelection().anchorNode.parentElement;
+                }
+              }}/>
+              <Popover
+                classes={{
+                  paper: classes.popover
+                }}
+                open={this.state.openTop}
+                anchorEl={this.anchorElTop}
+                anchorReference={"anchorEl"}
+                onClose={() => this.handleClosePopover("openTop")}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "center"
+                }}
+                transformOrigin={{
+                  vertical: "bottom",
+                  horizontal: "center"
+                }}
+              >
+                <h3 className={classes.popoverHeader}>Add for translation</h3>
+                <div className={classes.popoverBody}>
+                <Button color="primary" onClick={() => alert(document.getSelection().toString())}>
+                  Add
+                </Button>
+                </div>
+              </Popover>
             </GridItem>
           </GridContainer>
         </div>
@@ -46,4 +105,4 @@ class ProductSection extends React.Component {
   }
 }
 
-export default withStyles(productStyle)(ProductSection);
+export default withStyles(productStyle)(RepositorySection);
