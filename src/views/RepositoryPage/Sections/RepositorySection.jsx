@@ -46,6 +46,10 @@ class RepositorySection extends React.Component {
     });
   }
 
+  createJson (selection) {
+    
+  }
+
   componentDidMount () {
     document.oncontextmenu = (e) => e.preventDefault()
   }
@@ -103,7 +107,7 @@ class RepositorySection extends React.Component {
               >
                 <h3 className={classes.popoverHeader}>Add for translation</h3>
                 <div className={classes.popoverBody}>
-                <Button color="primary" onClick={() => alert(document.getSelection().toString())}>
+                <Button color="primary" onClick={() => this.createJson(document.getSelection().toString())}>
                   Add
                 </Button>
                 </div>

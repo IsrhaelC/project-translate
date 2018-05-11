@@ -1,25 +1,21 @@
 import React from "react";
 // material-ui components
 import withStyles from "material-ui/styles/withStyles";
-import InputAdornment from "material-ui/Input/InputAdornment";
-// @material-ui/icons
-import Email from "@material-ui/icons/Email";
-import LockOutline from "@material-ui/icons/LockOutline";
-import InsertLink from "@material-ui/icons/InsertLink";
 // core components
 import Header from "components/Header/Header.jsx";
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
 import Footer from "components/Footer/Footer.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
-import Button from "components/CustomButtons/Button.jsx";
+import Button from "material-ui/Button";
 import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
 import { Link } from "react-router-dom";
-
+import TextField from 'material-ui/TextField';
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
+
+import TranslateService from "../../services/TranslateService.js"
 
 import image from "assets/img/bg7.jpg";
 
@@ -28,9 +24,23 @@ class LoginPage extends React.Component {
     super(props);
     // we use this to make the card to appear after the page has been rendered
     this.state = {
-      cardAnimaton: "cardHidden"
+      cardAnimaton: "cardHidden",
+      email: '',
+      password: '',
+      repository: '',
+      repos: []
     };
   }
+
+  handleAuth () {
+    console.log(this.state)
+    //var tService = new TranslateService(this.state.repository)
+   // this.setState({
+    //  repos: tService.getFilesFromRepo()
+    //})
+   // console.log(this.state.repos)
+  }
+
   componentDidMount() {
     // we add a hidden class to the card and after 700 ms we delete it and the transition appears
     setTimeout(
@@ -65,55 +75,31 @@ class LoginPage extends React.Component {
                 <Card className={classes[this.state.cardAnimaton]}>
                   <form className={classes.form}>
                     <CardBody>
-                      <CustomInput
-                        labelText="Email..."
+                      <TextField
+                        label="Email"
                         id="email"
-                        formControlProps={{
-                          fullWidth: true
-                        }}
-                        inputProps={{
-                          type: "email",
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <Email className={classes.inputIconsColor}/>
-                            </InputAdornment>
-                          )
-                        }}
+                        type="text"
+                        value={this.state.email}
+                        onChange={(e) => this.setState({email: e.target.value})}
                       />
-                      <CustomInput
-                        labelText="Password"
-                        id="pass"
-                        formControlProps={{
-                          fullWidth: true
-                        }}
-                        inputProps={{
-                          type: "password",
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <LockOutline className={classes.inputIconsColor}/>
-                            </InputAdornment>
-                          )
-                        }}
+                      <TextField
+                        id="password"
+                        label="Password"
+                        type="password"
+                        value={this.state.password}
+                        onChange={(e) => this.setState({password: e.target.value})}
                       />
-                      <CustomInput
-                        labelText="Link do Repositório"
-                        id="link"
-                        formControlProps={{
-                          fullWidth: true
-                        }}
-                        inputProps={{
-                          type: "text",
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <InsertLink className={classes.inputIconsColor}/>
-                            </InputAdornment>
-                          )
-                        }}
+                      <TextField
+                        label="Repository"
+                        id="repository"
+                        type="text"
+                        value={this.state.repository}
+                        onChange={(e) => this.setState({repository: e.target.value})}
                       />
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
                       <Link to="/repository">
-                        <Button simple color="primary" size="lg">
+                        <Button color="primary" onClick={() => {this.handleAuth()}}>
                           Get started
                         </Button>
                       </Link>
