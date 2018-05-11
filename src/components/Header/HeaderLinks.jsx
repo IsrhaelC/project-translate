@@ -56,6 +56,16 @@ function HeaderLinks({ ...props }) {
         </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
+        <Link to="/repository" className={classes.dropdownLink}>
+          <Button
+            color="transparent"
+            target="_blank"
+            className={classes.navLink}>
+            <MonetizationOn className={classes.icons} /> Get Free
+          </Button>
+        </Link>
+      </ListItem>
+      <ListItem className={classes.listItem}>
         <Tooltip
           id="instagram-twitter"
           title="Follow us on twitter"
