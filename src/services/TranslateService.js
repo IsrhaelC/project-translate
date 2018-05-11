@@ -3,25 +3,22 @@ var nrc = require('node-run-cmd');
 var LanguageTranslatorV2 = require('watson-developer-cloud/language-translator/v2');
 var execSync = require('child_process').execSync;
 var Promise = require('promise');
-var nodegit = require('nodegit'),
-    path = require('path');
-
-var url = "",
-    local = "", // Ex: ./test
-    cloneOpts = {};
+var nodegit = require('nodegit');
+var path = require('path');
 
 
 export class TranslateService{
 
+    cloneOpts = {};
     pathRepositorio = "";
 
     constructor(pathRepositorio){
-        this.pathRepositorio = pathRepositorio;
+        this.cloneRepo(pathRepositorio, './..');
     }
 
     cloneRepo(url, local) {
         nodegit.Clone(url, local, cloneOpts).then(function (repo) {
-            console.log("Cloned " + path.basename(url) + " to " + repo.workdir());
+            this.pathRepositorio = repo.workdir();
         }).catch(function (err) {
             console.log(err);
         });
@@ -65,7 +62,7 @@ export class TranslateService{
         fs.readFile(caminhoArquivo, 'utf-8', function(err, data){
             if (err) throw err;
         
-            var newValue = data.replace(`/^${textoOriginal}$/`, textoTraduzido);
+            var newValue = data.replace(textoOriginal, textoTraduzido);
         
             fs.writeFile(caminhoArquivo, newValue, 'utf-8', function (err) {
               if (err) throw err;
@@ -82,23 +79,26 @@ export class TranslateService{
         .split('\n')
         .slice(0, -1);
     }
+
+   pushToRepo(branchName){
+        execSync(`git push -u origin ${branchName}`, { 
+            encoding: 'utf8', 
+            cwd: this.pathRepositorio 
+        });
+    }
     
     checkoutBranch(branchName){
         execSync(`git checkout ${branchName}`, { 
             encoding: 'utf8', 
             cwd: this.pathRepositorio
-        })
-        .split('\n')
-        .slice(0, -1);
+        });
     }
     
     createBranch(branchName){
         execSync(`git checkout -b ${branchName}`, { 
             encoding: 'utf8', 
             cwd: this.pathRepositorio 
-        })
-        .split('\n')
-        .slice(0, -1);
+        });
     }
     
     commitBranch(branchName, commitMsg){
@@ -128,6 +128,7 @@ export class TranslateService{
                 console.log('error:', err);
               } else  {
                 console.log(JSON.stringify(translation, null, 2));
+                return translation;
               }
             }
         );
