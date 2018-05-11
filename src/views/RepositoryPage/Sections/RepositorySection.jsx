@@ -9,6 +9,7 @@ import Popover from "material-ui/Popover";
 import Button from "material-ui/Button";
 
 import CodeViewer from '../../../components/CodeViewer/CodeViewer.jsx'
+import RepoList from '../../../components/RepoList/RepoList.jsx'
 
 import productStyle from "assets/jss/material-kit-react/views/landingPageSections/productStyle.jsx";
 
@@ -24,7 +25,12 @@ class RepositorySection extends React.Component {
       openLeft: false,
       openTop: false,
       openBottom: false,
-      openRight: false
+      openRight: false,
+      repos: [{
+        nome: "repositorio 1"
+      }, {
+        nome: "repositorio 2"
+      }]
     };
   }
 
@@ -63,6 +69,11 @@ class RepositorySection extends React.Component {
           </GridItem>
         </GridContainer>
         <div>
+          <GridContainer>
+            <GridItem xs={12} sm={12} md={12}>
+              <RepoList repos={this.state.repos}/>
+            </GridItem>
+          </GridContainer>
           <GridContainer>
             <GridItem xs={12} sm={12} md={12}>
               <CodeViewer handleClick={(e) => {
