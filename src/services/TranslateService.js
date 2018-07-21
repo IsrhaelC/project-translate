@@ -1,60 +1,29 @@
+'use strict'
+
 var fs = require('fs');
 var nrc = require('node-run-cmd');
 var LanguageTranslatorV2 = require('watson-developer-cloud/language-translator/v2');
 var execSync = require('child_process').execSync;
 var Promise = require('promise');
-var nodegit = require('nodegit');
 var path = require('path');
 
 
-export class TranslateService{
+export default class TranslateService{
 
     cloneOpts = {};
     pathRepositorio = "";
+    pathLocal = "C:/Users/Mikael/Documents/";
 
     constructor(pathRepositorio){
         this.cloneRepo(pathRepositorio, './..');
     }
 
     cloneRepo(url, local) {
-        nodegit.Clone(url, local, cloneOpts).then(function (repo) {
-            this.pathRepositorio = repo.workdir();
-        }).catch(function (err) {
-            console.log(err);
+        execSync(`git clone ${url} repositorio`, { 
+            encoding: 'utf8', 
+            cwd: this.pathLocal
         });
-    }
-
-    getListCommits(local) {
-        nodegit.Repository.open('local').then(function(repo) {
-            /* Get the current branch. */
-            return repo.getCurrentBranch().then(function(ref) {
-            console.log("On " + ref.shorthand() + " (" + ref.target() + ")");
-
-            /* Get the commit that the branch points at. */
-            return repo.getBranchCommit(ref.shorthand());
-          }).then(function (commit) {
-            /* Set up the event emitter and a promise to resolve when it finishes up. */
-            var hist = commit.history(),
-                p = new Promise(function(resolve, reject) {
-                    hist.on("end", resolve);
-                    hist.on("error", reject);
-                });
-            hist.start();
-            return p;
-          }).then(function (commits) {
-            /* Iterate through the last 10 commits of the history. */
-            for (var i = 0; i < 10; i++) {
-              var sha = commits[i].sha().substr(0,7),
-                  msg = commits[i].message().split('\n')[0];
-              console.log(sha + " " + msg);
-            }
-          });
-        }).catch(function (err) {
-          console.log(err);
-        }).done(function () {
-          console.log('Finished');
-        });
-
+        this.pathRepositorio = this.pathLocal + 'repositorio';
     }
 
     readWriteSync(caminhoArquivo, textoOriginal, textoTraduzido) {

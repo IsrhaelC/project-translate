@@ -22,22 +22,16 @@ class ProductSection extends React.Component {
           <GridItem xs={12} sm={12} md={8}>
             <h2 className={classes.title}>Let's talk product</h2>
             <h5 className={classes.description}>
-              Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit, 
-              sed do eiusmod tempor incididunt ut 
-              labore et dolore magna aliqua. 
-              Ut enim ad minim veniam, 
-              quis nostrud exercitation ullamco 
-              laboris nisi ut aliquip ex ea commodo consequat. 
+            Translate Project can translate your project through its Git project, using a neural network for a more efficient translation, after configuration, a new branch is generated in your project with the language chosen for translation
             </h5>
           </GridItem>
         </GridContainer>
-        <div>
+        <div> 
           <GridContainer>
             <GridItem xs={12} sm={12} md={4}>
               <InfoArea
                 title="You in the world"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                description="Do your project reaches people around the planet."
                 icon={Language}
                 iconColor="info"
                 vertical
@@ -46,7 +40,7 @@ class ProductSection extends React.Component {
             <GridItem xs={12} sm={12} md={4}>
               <InfoArea
                 title="Safe Translation"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.."
+                description="Your message correctly translated into numerous languages"
                 icon={VerifiedUser}
                 iconColor="success"
                 vertical
@@ -55,7 +49,7 @@ class ProductSection extends React.Component {
             <GridItem xs={12} sm={12} md={4}>
               <InfoArea
                 title="Simplified configuration"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                description="Easily set in minutes"
                 icon={Settings}
                 iconColor="danger"
                 vertical

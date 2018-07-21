@@ -20,8 +20,8 @@ class RepositoryPage extends React.Component {
       <div>
         <Header
           absolute
-          color="transparent"
-          brand="Material Kit React"
+          color="info"
+          brand="Project Translate"
           rightLinks={<HeaderLinks />}
           {...rest}
         />

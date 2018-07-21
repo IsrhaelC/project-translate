@@ -27,9 +27,13 @@ class RepositorySection extends React.Component {
       openBottom: false,
       openRight: false,
       repos: [{
-        nome: "repositorio 1"
+        nome: "Button.jxs"
       }, {
-        nome: "repositorio 2"
+        nome: "index.html"
+      }, {
+        nome: "Card.jxs"
+      }, {
+        nome: "index.js"
       }],
       traducoes: [],
       languageSource: '',
@@ -52,7 +56,7 @@ class RepositorySection extends React.Component {
   createJson (selection, pathFile) {
     var array = []
     var obj = new Object()
-    obj.texto = texto
+    obj.texto = 'texto'
     obj.pagina = pathFile
     array.push(obj)
     this.setState({
@@ -122,6 +126,9 @@ class RepositorySection extends React.Component {
                 </Button>
                 </div>
               </Popover>
+              <Button color="primary" onClick={() => this.createJson(document.getSelection().toString(), "path de arquivo qualquer")}>
+                  Translate Now
+                </Button>
             </GridItem>
           </GridContainer>
         </div>

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@fdaciuk/ajax": "^2.3.0",
     "@material-ui/icons": "1.0.0-beta.43",
     "history": "4.7.2",
     "material-ui": "^1.0.0-beta.45",

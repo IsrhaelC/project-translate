@@ -15,9 +15,10 @@ import { Link } from "react-router-dom";
 import TextField from 'material-ui/TextField';
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 
-import TranslateService from "../../services/TranslateService.js"
+//import TranslateService from "../../services/TranslateService.js"
 
 import image from "assets/img/bg7.jpg";
+import ajax from '@fdaciuk/ajax'
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -33,12 +34,12 @@ class LoginPage extends React.Component {
   }
 
   handleAuth () {
-    console.log(this.state)
-    //var tService = new TranslateService(this.state.repository)
-   // this.setState({
-    //  repos: tService.getFilesFromRepo()
-    //})
-   // console.log(this.state.repos)
+    /*console.log(this.state)
+    var tService = new TranslateService(this.state.repository)
+    this.setState({
+    repos: tService.getFilesFromRepo()
+    })
+    console.log(this.state.repos)*/
   }
 
   componentDidMount() {
